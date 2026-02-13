@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Trial Report: Long-Term Effects of Loving You 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: #FFFFFF;
+        }
+
+        /* Breathing hearts background */
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-heart {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.15;
+            animation: breathe 3s ease-in-out infinite, float 15s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.1; }
+            50% { transform: scale(1.2); opacity: 0.2; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-10px); }
+            75% { transform: translateY(-30px) translateX(5px); }
+        }
+
+        /* Slides container */
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease-in forwards;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        .slide.hidden {
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Slide 1 - Title */
+        .slide-1 {
+            background: linear-gradient(135deg, #FADADD 0%, #FFE5E9 100%);
+        }
+
+        .molecule {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .molecule-1 { top: 5%; left: 5%; }
+        .molecule-2 { top: 5%; right: 5%; }
+        .molecule-3 { bottom: 5%; left: 5%; }
+        .molecule-4 { bottom: 5%; right: 5%; }
+
+        .main-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 64px);
+            font-weight: 900;
+            color: #FF6B9D;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            animation: slideDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(14px, 2.5vw, 22px);
+            color: #2E2E2E;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .department {
+            font-size: clamp(16px, 2vw, 24px);
+            color: #2E2E2E;
+            margin-top: 20px;
+        }
+
+        .department-name {
+            color: #FF6B9D;
+            font-style: italic;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .begin-btn {
+            margin-top: 50px;
+            padding: 18px 50px;
+            background: #FF6B9D;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .begin-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slide 2 - Symptoms */
+        .slide-2 {
+            background: #FFFFFF;
+        }
+
+        .slide-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            font-weight: 700;
+            color: #2E2E2E;
+            margin-bottom: 60px;
+        }
+
+        .symptoms-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .symptom-card {
+            background: linear-gradient(135deg, #FADADD 0%, #FFE5E9 100%);
+            padding: 40px 30px;
+            border-radius: 20px;
+            border: 3px solid #FF6B9D;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .symptom-card:nth-child(1) { animation-delay: 0.2s; }
+        .symptom-card:nth-child(2) { animation-delay: 0.4s; }
+        .symptom-card:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .symptom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.3);
+        }
+
+        .symptom-icon {
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .symptom-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #FF6B9D;
+            margin-bottom: 15px;
+        }
+
+        .symptom-desc {
+            font-size: 16px;
+            color: #2E2E2E;
+            line-height: 1.6;
+        }
+
+        /* Slide 3 - Receptor Binding */
+        .slide-3 {
+            background: linear-gradient(135deg, #FFFFFF 0%, #FFF5F7 100%);
+        }
+
+        .receptor-box {
+            background: #FADADD;
+            border-left: 8px solid #FF6B9D;
+            padding: 25px 30px;
+            margin: 20px 0;
+            border-radius: 12px;
+            text-align: left;
+            transition: all 0.3s ease;
+            animation: slideInLeft 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .receptor-box:nth-child(1) { animation-delay: 0.1s; }
+        .receptor-box:nth-child(2) { animation-delay: 0.2s; }
+        .receptor-box:nth-child(3) { animation-delay: 0.3s; }
+        .receptor-box:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .receptor-box:hover {
+            transform: translateX(10px);
+            box-shadow: -5px 5px 20px rgba(255, 107, 157, 0.2);
+        }
+
+        .receptor-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: #2E2E2E;
+            margin-bottom: 8px;
+        }
+
+        .receptor-effect {
+            font-size: 18px;
+            color: #2E2E2E;
+        }
+
+        /* Slide 4 - Mechanism */
+        .slide-4 {
+            background: #FFFFFF;
+        }
+
+        .flow-container {
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .flow-step {
+            background: #FADADD;
+            border: 3px solid #FF6B9D;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 15px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2E2E2E;
+            position: relative;
+            animation: popIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .flow-step:nth-child(1) { animation-delay: 0.2s; }
+        .flow-step:nth-child(2) { animation-delay: 0.5s; }
+        .flow-step:nth-child(3) { animation-delay: 0.8s; }
+        .flow-step:nth-child(4) { animation-delay: 1.1s; }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .arrow {
+            text-align: center;
+            font-size: 40px;
+            color: #FF6B9D;
+            margin: -10px 0;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        /* Slide 5 - Clinical Data */
+        .slide-5 {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFFFFF 100%);
+        }
+
+        .metric {
+            margin: 40px 0;
+            animation: fadeIn 0.8s ease-out forwards;
+            opacity: 0;
+        }
+
+        .metric:nth-child(1) { animation-delay: 0.2s; }
+        .metric:nth-child(2) { animation-delay: 0.5s; }
+        .metric:nth-child(3) { animation-delay: 0.8s; }
+
+        .metric-label {
+            font-size: 26px;
+            font-weight: 700;
+            color: #2E2E2E;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .progress-bar {
+            background: #F0F0F0;
+            height: 50px;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FF6B9D 0%, #FF8FB3 100%);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            padding-right: 20px;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+            transition: width 2s ease-out;
+        }
+
+        .progress-fill.gray {
+            background: #D3D3D3;
+            color: #666;
+        }
+
+        .metric-note {
+            font-size: 20px;
+            color: #FF6B9D;
+            font-style: italic;
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        /* Slide 6 - The Question */
+        .slide-6 {
+            background: linear-gradient(135deg, #FADADD 0%, #FFE5E9 100%);
+        }
+
+        .conclusion-text {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: #2E2E2E;
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .big-question {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 900;
+            color: #FF6B9D;
+            margin: 40px 0;
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10%, 30% { transform: scale(1.1); }
+            20% { transform: scale(0.95); }
+        }
+
+        .button-container {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .answer-btn {
+            padding: 20px 60px;
+            font-size: 28px;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .yes-btn {
+            background: #FF6B9D;
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        .yes-btn:hover {
+            background: #FF5289;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5);
+        }
+
+        .no-btn {
+            background: #E0E0E0;
+            color: #666;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-btn:hover {
+            animation: runAway 0.3s ease-out forwards;
+        }
+
+        @keyframes runAway {
+            to {
+                transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px));
+            }
+        }
+
+        /* Slide 7 - Error 404 */
+        .slide-7 {
+            background: linear-gradient(135deg, #FFE5E9 0%, #FADADD 100%);
+        }
+
+        .error-code {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(80px, 12vw, 150px);
+            font-weight: 900;
+            color: #FF6B9D;
+            margin-bottom: 20px;
+        }
+
+        .error-text {
+            font-size: clamp(24px, 4vw, 40px);
+            font-weight: 700;
+            color: #2E2E2E;
+            margin-bottom: 40px;
+        }
+
+        .cat-gif {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 20px;
+            margin: 30px auto;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .please-text {
+            font-size: clamp(20px, 3vw, 32px);
+            color: #FF6B9D;
+            font-style: italic;
+            margin-top: 30px;
+        }
+
+        .back-btn {
+            margin-top: 40px;
+            padding: 18px 50px;
+            background: #FF6B9D;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 22px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .back-btn:hover {
+            background: #FF5289;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(255, 107, 157, 0.4);
+        }
+
+        /* Slide 8 - Final Success */
+        .slide-8 {
+            background: linear-gradient(135deg, #FF6B9D 0%, #FF8FB3 100%);
+        }
+
+        .success-container {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            animation: celebrate 0.6s ease-out;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: scale(0.8) rotate(-5deg);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05) rotate(2deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        .success-message {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 5vw, 56px);
+            font-weight: 900;
+            color: #FF6B9D;
+            line-height: 1.4;
+            margin-bottom: 30px;
+        }
+
+        .hearts-explosion {
+            font-size: 60px;
+            margin: 30px 0;
+            animation: pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .final-note {
+            font-size: clamp(18px, 2.5vw, 24px);
+            color: #2E2E2E;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #FF6B9D;
+            position: absolute;
+            animation: confetti-fall 3s linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .symptoms-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .button-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .answer-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Breathing hearts background -->
+    <div class="hearts-background" id="heartsBackground"></div>
+
+    <!-- Slide 1: Title -->
+    <div class="slide active slide-1" id="slide1">
+        <div class="slide-content">
+            <div class="molecule molecule-1">⚛️</div>
+            <div class="molecule molecule-2">🧬</div>
+            <div class="molecule molecule-3">💧</div>
+            <div class="molecule molecule-4">🧪</div>
+            
+            <div class="subtitle">Clinical Trial Report</div>
+            <h1 class="main-title">Long-Term Effects<br>of Loving Bhumuwuw</h1>
+            <div class="department">
+                Published by the Department of
+                <span class="department-name">Inder App Mujhe Pyaar Nhi Krte</span>
+            </div>
+            <button class="begin-btn" onclick="nextSlide(2)">Begin Study 💕</button>
+        </div>
+    </div>
+
+    <!-- Slide 2: Symptoms -->
+    <div class="slide hidden slide-2" id="slide2">
+        <div class="slide-content">
+            <h2 class="slide-title">SYMPTOMS UPON EXPOSURE TO SUBJECT</h2>
+            <div class="symptoms-container">
+                <div class="symptom-card">
+                    <div class="symptom-icon">💓</div>
+                    <div class="symptom-title">Increased Heart Rate</div>
+                    <div class="symptom-desc">Cardiac acceleration upon visual contact with subject</div>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🧠</div>
+                    <div class="symptom-title">Dopamine Surge</div>
+                    <div class="symptom-desc">Neurotransmitter levels exceed normal range by 2000%</div>
+                </div>
+                <div class="symptom-card">
+                    <div class="symptom-icon">🦋</div>
+                    <div class="symptom-title">Chronic Butterflies</div>
+                    <div class="symptom-desc">Persistent flutter in stomach region when near subject</div>
+                </div>
+            </div>
+            <button class="begin-btn" onclick="nextSlide(3)" style="margin-top: 50px;">Continue Research →</button>
+        </div>
+    </div>
+
+    <!-- Slide 3: Receptor Binding -->
+    <div class="slide hidden slide-3" id="slide3">
+        <div class="slide-content">
+            <h2 class="slide-title">RECEPTOR BINDING ANALYSIS</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="receptor-box">
+                    <div class="receptor-name">Beta-1 Activation</div>
+                    <div class="receptor-effect">Increased heart rate when she smiles ❤️</div>
+                </div>
+                <div class="receptor-box">
+                    <div class="receptor-name">Beta-2 Stimulation</div>
+                    <div class="receptor-effect">Breathlessness during eye contact</div>
+                </div>
+                <div class="receptor-box">
+                    <div class="receptor-name">Alpha-1 Response</div>
+                    <div class="receptor-effect">Sudden alertness when she texts</div>
+                </div>
+                <div class="receptor-box">
+                    <div class="receptor-name">Dopamine Flooding</div>
+                    <div class="receptor-effect">Extreme happiness in her presence</div>
+                </div>
+            </div>
+            <button class="begin-btn" onclick="nextSlide(4)" style="margin-top: 50px;">Next Analysis →</button>
+        </div>
+    </div>
+
+    <!-- Slide 4: Mechanism of Action -->
+    <div class="slide hidden slide-4" id="slide4">
+        <div class="slide-content">
+            <h2 class="slide-title">MECHANISM OF ACTION</h2>
+            <div class="flow-container">
+                <div class="flow-step">She appears ✨</div>
+                <div class="arrow">▼</div>
+                <div class="flow-step">Visual cortex activated 👁️</div>
+                <div class="arrow">▼</div>
+                <div class="flow-step">Sympathetic nervous system stimulated ⚡</div>
+                <div class="arrow">▼</div>
+                <div class="flow-step">Attachment permanently formed 💕</div>
+            </div>
+            <button class="begin-btn" onclick="nextSlide(5)" style="margin-top: 50px;">View Data →</button>
+        </div>
+    </div>
+
+    <!-- Slide 5: Clinical Data -->
+    <div class="slide hidden slide-5" id="slide5">
+        <div class="slide-content">
+            <h2 class="slide-title">CLINICAL DATA</h2>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="metric">
+                    <div class="metric-label">Happiness Before Her</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill gray" id="progress1" style="width: 0%">20%</div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Happiness After Her</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress2" style="width: 0%">100%</div>
+                    </div>
+                    <div class="metric-note">2000% increase! 📈</div>
+                </div>
+                <div class="metric">
+                    <div class="metric-label">Attachment Level</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress3" style="width: 0%">100%</div>
+                    </div>
+                </div>
+            </div>
+            <button class="begin-btn" onclick="nextSlide(6)" style="margin-top: 50px;">See Conclusion →</button>
+        </div>
+    </div>
+
+    <!-- Slide 6: The Question -->
+    <div class="slide hidden slide-6" id="slide6">
+        <div class="slide-content">
+            <h2 class="slide-title">CONCLUSION</h2>
+            <div class="conclusion-text">
+                Based on extensive research and clinical observation,<br>
+                the data overwhelmingly supports one hypothesis:
+            </div>
+            <div class="big-question">
+                Will you be my<br>Valentine? 💝
+            </div>
+            <div class="button-container">
+                <button class="answer-btn yes-btn" onclick="sayYes()">YES! 💕</button>
+                <button class="answer-btn no-btn" id="noBtn" onclick="sayNo()">No</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 7: Error 404 -->
+    <div class="slide hidden slide-7" id="slide7">
+        <div class="slide-content">
+            <div class="error-code">ERROR 404</div>
+            <div class="error-text">Option Does Not Exist</div>
+            <img src="https://media.giphy.com/media/L2qukNXGjccyuAYd3W/giphy.gif" alt="Sad puppy eyes" class="cat-gif">
+            <div class="please-text">🥺 Please think again...</div>
+            <button class="back-btn" onclick="nextSlide(6)">← Back to Question</button>
+        </div>
+    </div>
+
+    <!-- Slide 8: Success! -->
+    <div class="slide hidden slide-8" id="slide8">
+        <div class="slide-content">
+            <div class="success-container">
+                <div class="success-message">
+                    Knew it!<br>
+                    My smart researcher baby 🧬💕
+                </div>
+                <div class="hearts-explosion">❤️💕💖💗💓💝</div>
+                <div class="final-note">
+                    So proud of you for making the right choice!<br>
+                    Mwah!!! 💋✨
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Create breathing hearts background
+        function createHearts() {
+            const container = document.getElementById('heartsBackground');
+            const heartCount = 20;
+            
+            for (let i = 0; i < heartCount; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = '💕';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.top = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 3 + 's';
+                heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+                container.appendChild(heart);
+            }
+        }
+
+        // Navigate between slides
+        function nextSlide(slideNumber) {
+            document.querySelectorAll('.slide').forEach(slide => {
+                slide.classList.remove('active');
+                slide.classList.add('hidden');
+            });
+            
+            const targetSlide = document.getElementById('slide' + slideNumber);
+            targetSlide.classList.remove('hidden');
+            targetSlide.classList.add('active');
+
+            // Animate progress bars on slide 5
+            if (slideNumber === 5) {
+                setTimeout(() => {
+                    document.getElementById('progress1').style.width = '20%';
+                }, 300);
+                setTimeout(() => {
+                    document.getElementById('progress2').style.width = '100%';
+                }, 800);
+                setTimeout(() => {
+                    document.getElementById('progress3').style.width = '100%';
+                }, 1300);
+            }
+
+            // Reset no button position and sizes
+            if (slideNumber === 6) {
+                const noBtn = document.getElementById('noBtn');
+                const yesBtn = document.querySelector('.yes-btn');
+                noBtn.style.transform = 'translate(0, 0)';
+                yesBtn.style.transform = 'scale(1)';
+                noBtnScale = 1;
+                yesBtnScale = 1;
+                noClickCount = 0;
+            }
+        }
+
+        // Handle "No" button - make it run away
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.querySelector('.yes-btn');
+        let noClickCount = 0;
+        let noBtnScale = 1;
+        let yesBtnScale = 1;
+
+        noBtn.addEventListener('mouseenter', function() {
+            const maxX = 200;
+            const maxY = 200;
+            const randomX = (Math.random() - 0.5) * maxX;
+            const randomY = (Math.random() - 0.5) * maxY;
+            
+            this.style.setProperty('--x', randomX);
+            this.style.setProperty('--y', randomY);
+        });
+
+        function sayNo() {
+            noClickCount++;
+            
+            // Make No button smaller
+            noBtnScale -= 0.15;
+            if (noBtnScale < 0.3) noBtnScale = 0.3; // Minimum size
+            
+            // Make Yes button bigger
+            yesBtnScale += 0.2;
+            
+            // Apply new scales
+            noBtn.style.transform = `scale(${noBtnScale})`;
+            yesBtn.style.transform = `scale(${yesBtnScale})`;
+            
+            // After 5 clicks, show error page
+            if (noClickCount >= 5) {
+                nextSlide(7);
+            } else {
+                // Make button jump on click
+                setTimeout(() => {
+                    const randomX = (Math.random() - 0.5) * 300;
+                    const randomY = (Math.random() - 0.5) * 300;
+                    noBtn.style.transform = `translate(${randomX}px, ${randomY}px) scale(${noBtnScale})`;
+                }, 100);
+            }
+        }
+
+        function sayYes() {
+            // Create confetti
+            createConfetti();
+            nextSlide(8);
+        }
+
+        function createConfetti() {
+            const colors = ['#FF6B9D', '#FF8FB3', '#FADADD', '#FFE5E9', '#FF1744'];
+            for (let i = 0; i < 100; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -10 + '%';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = Math.random() * 3 + 's';
+                confetti.style.animationDuration = (2 + Math.random() * 3) + 's';
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => confetti.remove(), 5000);
+            }
+        }
+
+        // Initialize
+        window.addEventListener('load', () => {
+            createHearts();
+        });
+    </script>
+</body>
+</html>
